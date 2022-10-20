@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Travel Ticket</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+
+    /*Remove padding to remove in print*/
+    .ticket {
+      padding: 0 25px;
+    }
+
+    .mt-20 {
+      margin-top: 20px;
+    }
+
+    .bold {
+      font-weight: 700;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    .border {
+      border: 1px solid black;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    /* Header Starts */
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+      /* background-color: red; */
+    }
+
+    .company-details {
+      display: flex;
+      align-items: flex-start;
+      width: 50%;
+    }
+
+    .company-details img {
+      width: 125px;
+      height: 125px;
+      margin-right: 20px;
+    }
+
+    .details-text {
+      line-height: 30px;
+      margin-bottom: 50px;
+    }
+
+    .details-text h1 {
+      text-transform: uppercase;
+    }
+
+    .statement-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      /* background-color: blue; */
+      flex-grow: 1;
+    }
+
+    .statement-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      line-height: 30px;
+      margin-bottom: 50px;
+      /* background-color: green; */
+    }
+
+    .statement-text span {
+      border-bottom: 1px solid black;
+      color: red;
+    }
+
+    .statement-details h2 {
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-weight: 1000;
+      text-align: center;
+    }
+
+    /* .bottom-header {
+    margin-left: 65px;
+  } */
+
+    .bottom-header p {
+      color: red;
+    }
+
+    .bottom-header b {
+      color: black;
+    }
+    /* Header Ends */
+
+    .program-info table,
+    .vehicle-table table,
+    .other-charges table,
+    .total table {
+      width: 100%;
+    }
+
+    .vehicle-table table td,
+    .vehicle-table table th,
+    .other-charges table td,
+    .other-charges table th,
+    .total table td,
+    .total table th {
+      padding: 10px;
+    }
+
+    /* Program Information */
+
+    .program-info .border {
+      border: 1px solid black;
+      margin-left: 10px;
+    }
+
+    .program-info td {
+      border: none;
+      padding: 5px 0;
+    }
+
+    .program-info {
+      border: 1px solid black;
+      padding: 10px;
+    }
+
+    .program-info table td:nth-child(1) {
+      width: 30%;
+    }
+    .program-info table td:nth-child(2) {
+      width: 40%;
+    }
+    .program-info table td:nth-child(3) {
+      width: 30%;
+    }
+    /* Program Information */
+
+    /* Vehicle Table */
+
+    .total-amt {
+      color: red;
+    }
+
+    .vehicle-table table td:nth-child(1) {
+      width: 10%;
+    }
+    .vehicle-table table td:nth-child(2) {
+      width: 10%;
+    }
+    .vehicle-table table td:nth-child(3) {
+      width: 5%;
+    }
+    .vehicle-table table td:nth-child(4) {
+      width: 5%;
+    }
+    .vehicle-table table td:nth-child(5) {
+      width: 5%;
+    }
+    .vehicle-table table td:nth-child(6) {
+      width: 10%;
+    }
+    .vehicle-table table td:nth-child(7) {
+      width: 10%;
+    }
+    .vehicle-table table td:nth-child(8) {
+      width: 7.5%;
+    }
+    .vehicle-table table td:nth-child(9) {
+      width: 7.5%;
+    }
+    .vehicle-table table td:nth-child(10) {
+      width: 10%;
+    }
+    .vehicle-table table td:nth-child(11) {
+      width: 20%;
+    }
+    /* Vehicle Table */
+
+    /* Other Charges Table */
+
+    .other-charges table td,
+    .other-charges table th {
+      padding: 10px;
+    }
+    .other-charges table td:nth-child(1) {
+      width: 10%;
+    }
+    .other-charges table td:nth-child(2) {
+      width: 10%;
+    }
+    .other-charges table td:nth-child(3) {
+      width: 5%;
+    }
+    .other-charges table td:nth-child(4) {
+      width: 5%;
+    }
+    .other-charges table td:nth-child(5) {
+      width: 5%;
+    }
+    .other-charges table td:nth-child(6) {
+      width: 10%;
+    }
+    .other-charges table td:nth-child(7) {
+      width: 10%;
+    }
+    .other-charges table td:nth-child(8) {
+      width: 7.5%;
+    }
+    .other-charges table td:nth-child(9) {
+      width: 7.5%;
+    }
+    .other-charges table td:nth-child(10) {
+      width: 10%;
+    }
+    .other-charges table td:nth-child(11) {
+      width: 20%;
+    }
+    /* Other Charges Table */
+
+    /* Signatures Section */
+    .signatures {
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid black;
+    }
+
+    .bt-sign {
+      margin-top: 50px;
+    }
+
+    .bt-sign p:nth-child(1) {
+      border-top: 1px solid black;
+    }
+    /* Signatures Section */
+  </style>
+
+  <body>
+    <section class="ticket">
+      <!-- Ticket Header Starts -->
+      <div class="ticket-header">
+        <div class="top-header">
+          <!-- Left of Header -->
+          <div class="company-details">
+            <img src="./cgdo-logo.jpg" alt="" />
+            <div class="details-text">
+              <h1>cgdo travel & tours</h1>
+              <p>
+                1107 Zone 4 Nationa Rd. Brgy Muzon, CSJDM Bulacan (CGDO Office)
+              </p>
+              <a href="">cgdotraveltourstourvancarservi@gmail.com</a>
+              <p>Lecharl Enriquez</p>
+              <p>9273426581/09615805315</p>
+              <p>NON VAT Reg. TIN 211-618-298-0000</p>
+            </div>
+          </div>
+          <!-- Right of Header -->
+          <div class="statement-details">
+            <h2>billing statement</h2>
+            <div class="statement-text">
+              <p>
+                Statement Date:<span class="bottom-line">September 2022</span>
+              </p>
+              <p>Billing Statement:<span class="bottom-line">00000088</span></p>
+              <p>Payment Terms:<span class="bottom-line">30 days</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-header">
+          <p><b>Billed to:</b> ABS-CBN CORPORATION</p>
+          <p>
+            <b>Address:</b> Logistic Transport Office ABS-CBN Eugenio Lopez
+            Drive, Diliman, Quezon City
+          </p>
+          <p><b>Department:</b> Logistic Support Service</p>
+        </div>
+      </div>
+      <!-- Ticket Header Ends -->
+      <!-- Program Information Starts -->
+      <div class="program-info mt-20">
+        <table>
+          <h3>PROGRAM INFORMATION</h3>
+          <tr>
+            <td><span class="bold">Program:</span> Darna</td>
+            <td><span class="bold">Plate #:</span> DAM 5059</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span class="bold">Contact Person</span>: Joshua Garcia</td>
+            <td><span class="bold">Vehicle Type:</span> Van</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span class="bold">Contact Number:</span> 09271197079</td>
+            <td><span class="bold">Location Area:</span> Makati City</td>
+            <td style="color: red">
+              <span class="bold" style="color: black"
+                >Total Amount Due > > > ></span
+              >
+              <p class="border" style="padding: 10px; display: inline-block">
+                4,765.00
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!-- Program Information Ends -->
+      <!-- Vehicle Information Starts -->
+      <div class="vehicle-table mt-20 text-center">
+        <table>
+          <tr>
+            <th>LOCATION</th>
+            <th>SRO#</th>
+            <th>VTT Number</th>
+            <th>REMARKS</th>
+            <th>Location Area</th>
+            <th>TRIP DATE/ START TIME / TIME IN</th>
+            <th>TRIP DATE/ END TIME / TIME OUT</th>
+            <th>NUMBER OF HOURS</th>
+            <th>Amount</th>
+            <th>Co-pilot Rate</th>
+            <th>TOTAL AMOUNT DUE</th>
+          </tr>
+          <tr>
+            <td>Cebu</td>
+            <td>SE2022090465</td>
+            <td>684345</td>
+            <td></td>
+            <td>1</td>
+            <td>21/09/2022 5:00:00 am</td>
+            <td>21/09/2022 5:00:00 pm</td>
+            <td>12</td>
+            <td>3,000.00</td>
+            <td></td>
+            <td class="total-amt">3,000.00</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>OT SURCHARGE</td>
+            <td>1</td>
+            <td>21/09/2022 5:00:00 am</td>
+            <td>21/09/2022 5:00:00 pm</td>
+            <td>6.4</td>
+            <td>1,280.00</td>
+            <td></td>
+            <td class="total-amt">1,280.00</td>
+          </tr>
+          <tr>
+            <td colspan="7" class="bold">
+              SUB TOTAL AMOUNNT DUE WITHOUT VAT (VEHICLE ONLY) > > > >
+            </td>
+            <td>18.4</td>
+            <td>4,520.00</td>
+            <td>-</td>
+            <td class="total-amt">4,520.00</td>
+          </tr>
+        </table>
+      </div>
+      <!-- Vehicle Information Ends -->
+      <!-- Other Expenses Starts -->
+
+      <div class="other-charges mt-20 text-center">
+        <table>
+          <tr class="toll">
+            <td colspan="11" style="color: blue">
+              TOLL FEES / PARKING FEES & ADDITIONAL GASOLINE REIMBURSEMENT of
+              DIFFERENT AREA or LOCATIONS
+            </td>
+          </tr>
+          <tr>
+            <th>LOCATION</th>
+            <th>RMS#</th>
+            <th>VTT Number</th>
+            <th>REMARKS</th>
+            <th>Location Area</th>
+            <th>Kilometers</th>
+            <th>Invoice</th>
+            <th></th>
+            <th>Amount</th>
+            <th></th>
+            <th>TOTAL AMOUNT DUE</th>
+          </tr>
+          <tr>
+            <td>Cebu</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>49KM X 5</td>
+            <td></td>
+            <td></td>
+            <td>245.00</td>
+            <td></td>
+            <td class="total-amt">245.00</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Gas Reimburse</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Toll Fees</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Parking Fees</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Meal Allowannce</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Accomodation</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="7" class="bold">
+              AMOUNT DUE for ADDITIONAL GASOLINE CHARGE / TOLL FEE / PARKING FEE
+              REIMBURSEMENT > > >
+            </td>
+            <td></td>
+            <td class="total-amt">245.00</td>
+            <td></td>
+            <td class="total-amt">245.00</td>
+          </tr>
+        </table>
+      </div>
+      <!-- Other Expenses Starts -->
+      <!-- Total Bill Starts -->
+      <div class="total mt-20 text-center">
+        <table>
+          <tr>
+            <th>
+              TOTAL AMOUNT DUE for SERVICE VEHICLE / TOLL FEES / PARKING FEES
+            </th>
+            <th>NUMBER OF HOURS</th>
+            <th>Total Amount</th>
+            <th>Co-Pilot Rate</th>
+            <th>TOTAL AMOUNT DUE</th>
+          </tr>
+          <tr>
+            <td class="bold">GRAND TOTAL AMOUNT DUE FOR PAYMENT > > > ></td>
+            <td class="total-amt">18.40</td>
+            <td class="total-amt">245.00</td>
+            <td></td>
+            <td class="total-amt">4,765.00</td>
+          </tr>
+        </table>
+      </div>
+      <!-- Total Bill Ends -->
+      <!-- Signatures Section Starts -->
+      <div class="signatures mt-20">
+        <div class="sign">
+          <p class="bold">Prepared By:</p>
+          <div class="bt-sign">
+            <p class="italic">(Signature Over Printed Name)</p>
+            <p>Date: September 2022</p>
+          </div>
+        </div>
+        <div class="sign">
+          <p class="bold">Checked & Validated by Logistics:</p>
+          <div class="bt-sign">
+            <p class="italic">(Signature Over Printed Name)</p>
+            <p>Date: September 2022</p>
+          </div>
+        </div>
+        <div class="sign">
+          <p class="bold">Billing Received By:</p>
+          <div class="bt-sign">
+            <p class="italic">(Signature Over Printed Name)</p>
+            <p>Date: September 2022</p>
+          </div>
+        </div>
+      </div>
+      <!-- Signatures Section Ends -->
+    </section>
+  </body>
+</html>
